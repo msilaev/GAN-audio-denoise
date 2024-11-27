@@ -85,7 +85,7 @@ Here are examples of training curves in terms of signal-to noise ratio (SNR), lo
 and adversarial loss:
 
 <img src="results/learning_curves/multispeaker/sr16000/gan_alt_5/gan_alt_5_multispeaker_SNR_loss.png" alt="SNR learning curve" width="400">
-
+<img src="results/learning_curves/multispeaker/sr16000/gan_alt_5/gan_alt_5_multispeaker_LSD_loss.png" alt="LSD learning curve" width="400">
 ### Testing models
 
 #### Evaluation scores
@@ -116,11 +116,4 @@ make run_evaluation_samples
 ```
 
 Denoising samples taken from noisy speech dataset [NOIZEUS](https://ecs.utdallas.edu/loizou/speech/noizeus/)
-
-| **Category**       | **Noisy**                                                                                      | **Denoised**                                                                                              | **Car Noise**                                                                    |
-|--------------------|------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| **Car**            | <audio controls><source src="data/examples/sp01_car_sn10.wav" type="audio/wav"></audio>        | <audio controls><source src="data/examples/Denoised/sp01_car_sn10.pr.wav.wav" type="audio/wav"></audio>    | <audio controls><source src="examples/sp01_car_sn10.wav" type="audio/wav"></audio> |
-| **Restaurant**     | <audio controls><source src="data/examples/sp01_restaurant_sn10.wav" type="audio/wav"></audio> | <audio controls><source src="data/examples/Denoised/sp01_restaurant_sn10.pr.wav.wav" type="audio/wav"></audio> | <audio controls><source src="examples/sp01_car_sn10.pr.wav.wav" type="audio/wav"></audio> |
-| **Babble**         | <audio controls><source src="data/examples/sp01_babble_sn10.wav" type="audio/wav"></audio>     | <audio controls><source src="data/examples/Denoised/sp01_babble_sn10.pr.wav.wav" type="audio/wav"></audio>     | <audio controls><source src="examples/sp01_car_sn10.pr.wav.wav" type="audio/wav"></audio> |
-| **Street**         | <audio controls><source src="data/examples/sp01_street_sn10.wav" type="audio/wav"></audio>     | <audio controls><source src="data/examples/Denoised/sp01_street_sn10.pr.wav.wav" type="audio/wav"></audio>     | <audio controls><source src="examples/sp01_car_sn10.pr.wav.wav" type="audio/wav"></audio> |
-| **Very old audio** | <audio controls><source src="data/examples/vl.mp3" type="audio/mp3"></audio>                   | <audio controls><source src="data/examples/Denoised/vl.pr.wav.wav" type="audio/wav"></audio>                   | <audio controls><source src="examples/sp01_car_sn10.pr.wav.wav" type="audio/wav"></audio> |
+can be found on the [demo page](https://msilaev.github.io/GAN-audio-denoise-demo/) 
