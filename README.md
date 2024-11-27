@@ -83,9 +83,11 @@ make run_training_gan_16_r_4_multispeaker
 
 Here are examples of training curves in terms of signal-to noise ratio (SNR), log spectral distance (LSD) 
 and adversarial loss:
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="results/learning_curves/multispeaker/sr16000/gan_alt_5/gan_alt_5_multispeaker_SNR_loss.png" alt="SNR learning curve" width="300">
+  <img src="results/learning_curves/multispeaker/sr16000/gan_alt_5/gan_alt_5_multispeaker_LSD_loss.png" alt="LSD learning curve" width="300">
+</div>
 
-<img src="results/learning_curves/multispeaker/sr16000/gan_alt_5/gan_alt_5_multispeaker_SNR_loss.png" alt="SNR learning curve" width="400">
-<img src="results/learning_curves/multispeaker/sr16000/gan_alt_5/gan_alt_5_multispeaker_LSD_loss.png" alt="LSD learning curve" width="400">
 ### Testing models
 
 #### Evaluation scores
