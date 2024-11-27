@@ -1,20 +1,3 @@
-SINGLE_SPEAKER_DIR=../VCTK-Corpus/wav48/p225
-
-# patch generation
-TR_DIM=-1
-TR_DIM=8192
-TR_STR=4096
-VA_DIM=-1
-VA_DIM=8192
-VA_STR=4096
-SR=16000
-SCA=4
-
-
-# fraction of patches to keep
-SAM=0.25
-
-
 # -------------------
 # train models
 # -------------------
@@ -76,4 +59,60 @@ run_evaluation_gan_16_multispeaker:
         --speaker multi \
         --snr 10
 
+# -------------------
+# prepare noisy test set
+# -------------------
+prepare_noisy_test:
 
+	python3 noisy_test_audio_synthesizer.py  \
+        --wav_file_list ../data/vctk/multispeaker/val-files.txt \
+        --sr 16000 \
+        --noisydir ../data/noise/DEMND-Corpus/ \
+        --snr 10 \
+        --target_level_lower -35 \
+        --target_level_upper -15 \
+        --output_dir_audio ../data/test \
+        --in_dir ../data/vctk \
+        --randomize_snr True
+
+# -------------------------
+run_evaluation_scores:
+
+	python3 eval_scores.py eval \
+	    --logname logs/multispeaker/sr16000/Alt5/multispeaker.r_4.gan.b128.sr_16000.generator_autoencoder_gan.epoch_210.pth\
+        --wav_file_list ../data/vctk/multispeaker/val-files.txt \
+        --model gan_multispeaker \
+        --sr 16000 \
+        --noisydir ../data/noise/DEMND-Corpus/ \
+        --snr 10 \
+        --target_level_lower -35 \
+        --target_level_upper -15 \
+        --output_dir_audio ../data/test \
+        --in_dir ../data/vctk \
+        --randomize_snr True \
+        --csv_path ../results/MOS/scores_gan_Alt5.csv
+
+# -------------------------
+run_evaluation_samples:
+
+	python3 test_other_audio.py \
+		--model gan_multispeaker \
+        --output ../data/examples/Denoised \
+        --data ../data/examples \
+        --sr 16000 \
+        --logname logs/multispeaker/sr16000/gan_alt_5/multispeaker.r_4.gan.b128.sr_16000.generator_autoencoder_gan.epoch_210.pth
+
+# -------------------------
+run_plt_loss_gan:
+
+	python3 plt_loss.py \
+        --model gan_alt_5_multispeaker \
+        --sr 16000
+
+# -------------------------
+run_hist_16_multispeaker_scores:
+
+	python3 plt_hist_thesis_16.py \
+	    --model gan \
+	    --sr 16000 \
+	    --speaker multi

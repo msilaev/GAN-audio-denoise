@@ -121,8 +121,7 @@ def add_data(h5_file, inputfiles, args, save_examples=False):
         x_len = len(x)
         x = x[:x_len - (x_len % args.scale)]
 
-        # Generate low-resolution version by adding noise
-
+        # Generate noisy version by adding noise
         noise_file = random.choice(noise_files)
         noise, noise_sr = librosa.load(noise_file,  sr=args.sr)
 
